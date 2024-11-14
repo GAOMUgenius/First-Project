@@ -38,16 +38,12 @@
       ]
     },
     {
-      "name": "Login",
-      "srcPath": "./features/Login",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
+      "name": "login",
+      "srcPath": "./features/login"
+    },
+    {
+      "name": "utils",
+      "srcPath": "./commons/utils",
     }
   ]
 }
