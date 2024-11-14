@@ -1,8 +1,11 @@
-import { faceDetector } from "@kit.CoreVisionKit"
+import prefUtil, { PrefUtil } from "utils/src/main/ets/utils/prefUtil"
+import { promptAction, router } from "@kit.ArkUI"
 
-@Preview
+
+
+@Entry({ routeName: 'LoginPage' })
 @Component
-export struct Login {
+struct LoginPage {
 
   @State account: string = ''
   @State password: string = ''
@@ -10,8 +13,12 @@ export struct Login {
   @State stopLogin: boolean = false
   @State loading: boolean = false
 
-  build() {
 
+  async aboutToAppear() {
+
+  }
+
+  build() {
     Column() {
       Column({ space: 15 }) {
         Column() {
@@ -68,12 +75,27 @@ export struct Login {
           .backgroundColor('#ff180258')
           .width('80%')
           .onClick(() => {
-
+            this.handleLogin()
           })
 
-        Text('忘记密码')
-          .fontSize(10)
-          .fontColor('#ff5f5d5d')
+        Row() {
+          Text('忘记密码')
+            .fontSize(12)
+            .fontColor('#ff5f5d5d')
+
+          Row() {
+            Checkbox()
+              .onChange((value: boolean) => {
+                this.rememberPassword = !this.rememberPassword
+              })
+
+            Text('记住密码')
+              .fontSize(12)
+              .fontColor('#ff5f5d5d')
+          }
+        }
+        .justifyContent(FlexAlign.SpaceBetween)
+        .width('60%')
 
       }
       .width('100%')
@@ -82,7 +104,5 @@ export struct Login {
   }
 
   async handleLogin() {
-    this.loading = true
-
   }
 }

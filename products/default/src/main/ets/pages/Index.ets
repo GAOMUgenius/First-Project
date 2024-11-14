@@ -1,4 +1,6 @@
-import { Login } from 'login';
+import { router } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import 'login/src/main/ets/pages/LoginPage'
 
 @Entry
 @Component
@@ -8,7 +10,18 @@ struct Index {
   build() {
     Row() {
       Column() {}
-        Login()
+        Button('点击进入登录界面')
+          .onClick(() => {
+              router.replaceNamedRoute({
+                name: 'LoginPage'
+              },router.RouterMode.Standard)
+                .then(() => {
+                  console.log('页面跳转成功！');
+                }).catch((err: BusinessError) => {
+                console.error(`页面跳转失败，错误代码：${err.code}, 错误信息：${err.message}`);
+              });
+
+          })
     }
   }
 }

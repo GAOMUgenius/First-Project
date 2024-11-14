@@ -38,12 +38,12 @@
       ]
     },
     {
-      "name": "login",
-      "srcPath": "./features/login"
-    },
-    {
       "name": "utils",
       "srcPath": "./commons/utils",
+    },
+    {
+      "name": "login",
+      "srcPath": "./features/login",
     }
   ]
 }

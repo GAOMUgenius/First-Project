@@ -6,6 +6,7 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "utils": "file:../../commons/utils",
     "login": "file:../../features/login"
   }
 }
