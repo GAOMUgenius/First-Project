@@ -72,7 +72,4 @@ export class PrefUtil {
   }
 }
 
-const prefUtil = new PrefUtil()
-
-export default prefUtil as PrefUtil
 

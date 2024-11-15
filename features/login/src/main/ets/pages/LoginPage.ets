@@ -1,21 +1,25 @@
-import prefUtil, { PrefUtil } from "utils/src/main/ets/utils/prefUtil"
-import { promptAction, router } from "@kit.ArkUI"
-
+import { PrefUtil } from "utils/src/main/ets/utils/prefUtil"
+import { Logger } from "utils/src/main/ets/utils/Logger"
+import { UserAccount } from '../model/UserAccount'
+import { TAG } from '@ohos/hypium/src/main/Constant'
 
 
 @Entry({ routeName: 'LoginPage' })
 @Component
 struct LoginPage {
-
+  private userAccount: UserAccount = new UserAccount()
+  private logger: Logger = new Logger('[GENIUS]')
   @State account: string = ''
   @State password: string = ''
   @State rememberPassword: boolean = false
   @State stopLogin: boolean = false
   @State loading: boolean = false
-
+  onPageShow() {
+    this.logger.info(TAG, 'onPageShow');
+  }
 
   async aboutToAppear() {
-
+    const prifUtil = new PrefUtil()
   }
 
   build() {
@@ -102,7 +106,7 @@ struct LoginPage {
     }
     .height('100%')
   }
-
   async handleLogin() {
+
   }
 }
