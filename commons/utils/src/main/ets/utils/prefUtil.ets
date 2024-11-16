@@ -63,7 +63,7 @@ export class PrefUtil {
     }
     try {
       await this.pref.put(key, value) //写入
-      await this.pref.flush() //刷新
+      await this.pref.flush()
       console.log(`preferences[mydata]写入${value}成功！`)
     } catch (err) {
       console.error('preferences[mydata]写入失败')
