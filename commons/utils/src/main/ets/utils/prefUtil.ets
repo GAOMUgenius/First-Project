@@ -54,7 +54,7 @@ export class PrefUtil {
   }
 
   /**
-   * 获取preferences的值
+   * 获
    */
   async putPreferenceValue(key: string, value: preferences.ValueType): Promise<void> {
     if (!this.pref) {
