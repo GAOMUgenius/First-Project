@@ -5,7 +5,7 @@ import 'login/src/main/ets/pages/LoginPage'
 @Entry
 @Component
 struct Index {
-  @State message: string = '';
+  @State message: string = 'Hello World';
 
   build() {
     Row() {
