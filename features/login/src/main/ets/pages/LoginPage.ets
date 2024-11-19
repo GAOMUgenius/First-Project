@@ -14,12 +14,13 @@ struct LoginPage {
   @State rememberPassword: boolean = false
   @State stopLogin: boolean = false
   @State loading: boolean = false
+  private  prifUtil = new PrefUtil()
   onPageShow() {
     this.logger.info(TAG, 'onPageShow');
   }
 
   async aboutToAppear() {
-    const prifUtil = new PrefUtil()
+    // this.prifUtil.loadPreference()
   }
 
   build() {
@@ -107,6 +108,6 @@ struct LoginPage {
     .height('100%')
   }
   async handleLogin() {
-
+    // this.prifUtil.putPreferenceValue()
   }
 }
