@@ -2,7 +2,8 @@ import { PrefUtil } from "utils/src/main/ets/utils/prefUtil"
 import { Logger } from "utils/src/main/ets/utils/Logger"
 import { UserAccount } from '../model/UserAccount'
 import { TAG } from '@ohos/hypium/src/main/Constant'
-
+import { router } from '@kit.ArkUI'
+// import 'product/default/src/main/ets/pages/MainPage'
 
 @Entry({ routeName: 'LoginPage' })
 @Component
@@ -15,6 +16,7 @@ struct LoginPage {
   @State stopLogin: boolean = false
   @State loading: boolean = false
   private  prifUtil = new PrefUtil()
+  @State harARouter: NavPathStack = new NavPathStack();
   onPageShow() {
     this.logger.info(TAG, 'onPageShow');
   }
@@ -109,5 +111,8 @@ struct LoginPage {
   }
   async handleLogin() {
     // this.prifUtil.putPreferenceValue()
+    router.replaceNamedRoute({
+      name: 'MainPage',
+    })
   }
 }

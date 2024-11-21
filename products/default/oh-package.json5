@@ -7,6 +7,7 @@
   "license": "",
   "dependencies": {
     "utils": "file:../../commons/utils",
-    "login": "file:../../features/login"
+    "login": "file:../../features/login",
+    "homepage": "file:../../features/homepage"
   }
 }

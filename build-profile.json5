@@ -44,6 +44,10 @@
     {
       "name": "login",
       "srcPath": "./features/login",
+    },
+    {
+      "name": "homepage",
+      "srcPath": "./features/homepage",
     }
   ]
 }
