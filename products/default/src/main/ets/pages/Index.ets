@@ -16,7 +16,7 @@ struct Index {
                 name: 'LoginPage'
               },router.RouterMode.Standard)
                 .then(() => {
-                  console.log('页面跳功！');
+                  console.log('页面跳转成功！');
                 }).catch((err: BusinessError) => {
                 console.error(`页面跳转失败，错误代码：${err.code}, 错误信息：${err.message}`);
               });
