@@ -1,10 +1,14 @@
+import { UserAccount } from "login/src/main/ets/model/UserAccount"
 
 @Component
 export struct HomePageView {
-  @Provide('NavPathStack') pageStack: NavPathStack = new NavPathStack()
+  @Consume userAccount: UserAccount
+
   build() {
-      Row() {
-        Text('这里是主页')
-      }
+    Row() {
+      Text('首页')
+      Text(this.userAccount.userAccount)
+
+    }
   }
 }

@@ -1,12 +1,13 @@
 export class UserAccount {
   id: string = ''
-  uerType: UserTypeEnum = UserTypeEnum.HMOS
-  username: string = ''
-  nickname: string = ''
+  uerType: UserTypeEnum = UserTypeEnum.OWNER
+  userName: string = ''
+  userAccount: string = ''
+  community: string = ''
   password: string = ''
 }
 
 export enum UserTypeEnum {
-  HMOS = 1,
-  HUAWEI= 2
+  OWNER = 1,
+  PROPERTY= 2
 }

@@ -48,6 +48,10 @@
     {
       "name": "homepage",
       "srcPath": "./features/homepage",
+    },
+    {
+      "name": "mine",
+      "srcPath": "./features/mine",
     }
   ]
 }

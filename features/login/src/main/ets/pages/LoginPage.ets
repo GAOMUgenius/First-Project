@@ -12,13 +12,10 @@ import { common } from '@kit.AbilityKit'
 struct LoginPage {
   private userAccount: UserAccount = new UserAccount()
   private logger: Logger = new Logger('[GENIUS]')
-  @State account: string = ''
-  @State password: string = ''
   @State rememberPassword: boolean = false
   @State stopLogin: boolean = false
   @State loading: boolean = false
   private  prifUtil = new PrefUtil()
-  @State harARouter: NavPathStack = new NavPathStack();
   onPageShow() {
     this.logger.info(TAG, 'onPageShow');
   }
@@ -56,7 +53,7 @@ struct LoginPage {
             .type(InputType.Email)
             .width('80%')
             .onChange(( value: string) => {
-              this.account = value
+              this.userAccount.userAccount = value
             })
         }
 
@@ -74,7 +71,7 @@ struct LoginPage {
             .type(InputType.Password)
             .width('80%')
             .onChange(( value: string) => {
-              this.password = value
+              this.userAccount.password = value
             })
         }
 
@@ -116,7 +113,8 @@ struct LoginPage {
     const bundleName = (getContext(this) as common.UIAbilityContext).applicationInfo.name;
     const url = `@bundle:${bundleName}/default/ets/pages/MainPage`
     router.pushUrl({
-      url
+      url,
+      params: this.userAccount
     }, (err) => {
       if (err) {
         console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
