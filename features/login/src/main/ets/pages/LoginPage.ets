@@ -3,7 +3,9 @@ import { Logger } from "utils/src/main/ets/utils/Logger"
 import { UserAccount } from '../model/UserAccount'
 import { TAG } from '@ohos/hypium/src/main/Constant'
 import { router } from '@kit.ArkUI'
-// import 'product/default/src/main/ets/pages/MainPage'
+import { common } from '@kit.AbilityKit'
+
+//import 'default/src/main/ets/pages/MainPage'
 
 @Entry({ routeName: 'LoginPage' })
 @Component
@@ -111,8 +113,16 @@ struct LoginPage {
   }
   async handleLogin() {
     // this.prifUtil.putPreferenceValue()
-    router.replaceNamedRoute({
-      name: 'MainPage',
+    const bundleName = (getContext(this) as common.UIAbilityContext).applicationInfo.name;
+    const url = `@bundle:${bundleName}/default/ets/pages/MainPage`
+    router.pushUrl({
+      url
+    }, (err) => {
+      if (err) {
+        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+      console.info('Invoke pushUrl succeeded.');
     })
   }
 }

@@ -6,6 +6,6 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "utils": "file:../../commons/utils",
+    "utils": "file:../../commons/utils"
   }
 }
