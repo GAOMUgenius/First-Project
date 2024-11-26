@@ -2,7 +2,7 @@ import { preferences } from '@kit.ArkData'
 
 export class PrefUtil {
   // 首选项实例
-  private pref: preferences.Preferences | null = null
+  protected pref: preferences.Preferences | null = null
 
   /*
   * 初始化preferences实例

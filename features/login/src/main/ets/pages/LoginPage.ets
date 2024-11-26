@@ -15,13 +15,16 @@ struct LoginPage {
   @State rememberPassword: boolean = false
   @State stopLogin: boolean = false
   @State loading: boolean = false
+  @State isAccountShow: boolean = false
+  @State accountImg: string = this.isAccountShow ? 'app.media.up' : 'app.media.down'
   private  prifUtil = new PrefUtil()
   onPageShow() {
     this.logger.info(TAG, 'onPageShow');
   }
 
   async aboutToAppear() {
-    // this.prifUtil.loadPreference()
+   await this.prifUtil.loadPreference(getContext(this));
+   // let accountList = this.prifUtil.getPreferenceValue('userAccount')
   }
 
   build() {
@@ -38,42 +41,10 @@ struct LoginPage {
             .width('90%')
         }
         .padding({ top: 50 })
-
-        Column() {
-          Text('账号')
-            .fontSize(15)
-            .fontFamily('HarmonyHeiTi')
-            .fontWeight(FontWeight.Medium)
-            .width('80%')
-            .fontColor('#ff201d5d')
-            .grayscale(0)
-            .padding({ bottom: 5})
-
-          TextInput()
-            .type(InputType.Email)
-            .width('80%')
-            .onChange(( value: string) => {
-              this.userAccount.userAccount = value
-            })
-        }
-
-        Column() {
-          Text('密码')
-            .fontSize(15)
-            .fontFamily('HarmonyHeiTi')
-            .fontWeight(FontWeight.Medium)
-            .width('80%')
-            .fontColor('#ff201d5d')
-            .grayscale(0)
-            .padding({ bottom: 5})
-
-          TextInput()
-            .type(InputType.Password)
-            .width('80%')
-            .onChange(( value: string) => {
-              this.userAccount.password = value
-            })
-        }
+        //账号输入框
+        this.accountTextInput()
+        //密码输入框
+        this.passwordTextInput()
 
         Button('登录')
           .type(ButtonType.Capsule)
@@ -122,5 +93,78 @@ struct LoginPage {
       }
       console.info('Invoke pushUrl succeeded.');
     })
+  }
+  @Builder
+  accountTextInput() {
+
+    Column() {
+      Text('账号')
+        .fontSize(15)
+        .fontFamily('HarmonyHeiTi')
+        .fontWeight(FontWeight.Medium)
+        .width('80%')
+        .fontColor('#ff201d5d')
+        .grayscale(0)
+        .padding({ bottom: 5})
+      Stack() {
+        TextInput()
+          .type(InputType.Email)
+          .width('80%')
+          .onChange(( value: string) => {
+            this.userAccount.userAccount = value
+          })
+        if (this.isAccountShow) {
+          Image($r('app.media.up'))
+            .width(20)
+            .height(20)
+            .onClick(() => {
+              this.isAccountShow =!this.isAccountShow
+            })
+            .margin({ right: 15 })
+        } else {
+          Image($r('app.media.down'))
+            .width(20)
+            .height(20)
+            .onClick(() => {
+              this.isAccountShow =!this.isAccountShow
+            })
+            .margin({ right: 15 })
+        }
+      }
+      .alignContent(Alignment.End)
+      .bindSheet(this.isAccountShow, this.accountShow(), {
+        detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
+        backgroundColor: Color.White,
+        blurStyle: BlurStyle.Thick,
+        showClose: false,
+        dragBar: true, // 默认显示控制条
+      });
+    }
+  }
+  @Builder
+  accountShow() {
+    List() {
+      // ForEach()
+    }
+  }
+  @Builder
+  passwordTextInput() {
+    Column() {
+      Text('密码')
+        .fontSize(15)
+        .fontFamily('HarmonyHeiTi')
+        .fontWeight(FontWeight.Medium)
+        .width('80%')
+        .fontColor('#ff201d5d')
+        .grayscale(0)
+        .padding({ bottom: 5})
+
+      TextInput()
+        .type(InputType.Password)
+        .width('80%')
+        .onChange(( value: string) => {
+          this.userAccount.password = value
+        })
+    }
   }
 }
