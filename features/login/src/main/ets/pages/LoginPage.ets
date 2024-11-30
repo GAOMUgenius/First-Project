@@ -19,7 +19,7 @@ struct LoginPage {
   @State accountImg: string = this.isAccountShow ? 'app.media.up' : 'app.media.down'
   private  prifUtil = new PrefUtil()
   onPageShow() {
-    this.logger.info(TAG, 'onPageShw');
+    this.logger.info(TAG, 'onPageShow');
   }
 
   async aboutToAppear() {
