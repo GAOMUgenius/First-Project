@@ -1,7 +1,7 @@
 @Component
-export struct mineView {
+export struct MineView {
 
   build() {
-    
+    Text('我的')
   }
 }

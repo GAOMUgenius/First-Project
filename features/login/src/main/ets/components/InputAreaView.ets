@@ -1,8 +1,11 @@
+import { Constants } from "../constants/LoginContants"
+import { UserAccount } from "../model/UserAccount"
+
 @Component
 export struct InputAreaView {
-  @Link userAccount: string
+  @Link user: UserAccount
   @Link isAccountShow: boolean
-  @Link password: string
+
   build() {
     Column() {
       Column() {
@@ -13,36 +16,24 @@ export struct InputAreaView {
           .width('80%')
           .fontColor('#ff201d5d')
           .grayscale(0)
-          .padding({ bottom: 5})
+          .padding({ bottom: 5 })
         Stack() {
           TextInput()
             .type(InputType.Email)
             .width('80%')
-            .onChange(( value: string) => {
-              this.userAccount = value
+            .onChange((value: string) => {
+              this.user.userAccount = value
             })
-          if (this.isAccountShow) {
-            Image($r('app.media.up'))
-              .width(20)
-              .height(20)
-              .onClick(() => {
-                this.isAccountShow = !this.isAccountShow
-              })
-              .margin({ right: 15 })
-          } else {
-            Image($r('app.media.down'))
-              .width(20)
-              .height(20)
-              .onClick(() => {
-                this.isAccountShow =!this.isAccountShow
-              })
-              .margin({ right: 15 })
-          }
-        }
-        .alignContent(Alignment.End)
+          Image(this.isAccountShow ? Constants.ACCOUNT_SHOW_UP : Constants.ACCOUNT_SHOW_DOWN)
+            .width(20)
+            .height(20)
+            .onClick(() => {
+              this.isAccountShow = !this.isAccountShow
+            })
+            .margin({ right: 15 })
+        }.alignContent(Alignment.End)
       }
       .margin({ bottom: 15 })
-
       Column() {
         Text('密码')
           .fontSize(15)
@@ -51,15 +42,18 @@ export struct InputAreaView {
           .width('80%')
           .fontColor('#ff201d5d')
           .grayscale(0)
-          .padding({ bottom: 5})
+          .padding({ bottom: 5 })
 
         TextInput()
           .type(InputType.Password)
           .width('80%')
-          .onChange(( value: string) => {
-            this.password = value
+          .onChange((value: string) => {
+            this.user.password = value
           })
       }
     }
+    .margin({ bottom: 15 })
+
+
   }
 }

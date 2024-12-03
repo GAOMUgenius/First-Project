@@ -8,6 +8,7 @@
   "dependencies": {
     "utils": "file:../../commons/utils",
     "login": "file:../../features/login",
-    "homepage": "file:../../features/homepage"
+    "homepage": "file:../../features/homepage",
+    "mine": "file:../../features/mine"
   }
 }

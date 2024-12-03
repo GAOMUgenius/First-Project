@@ -11,11 +11,8 @@ import { InputAreaView } from '../components/InputAreaView'
 @Entry({ routeName: 'LoginPage' })
 @Component
 struct LoginPage {
-  private dialog: AlertDialog = new AlertDialog()
   @Prop user: UserAccount = new UserAccount()
   private logger: Logger = new Logger('[LoginPage]')
-  @State password: string = ''
-  @State userAccount: string | undefined = undefined
   @State rememberPassword: boolean = false
   @State stopLogin: boolean = false
   @State loading: boolean = false
@@ -32,7 +29,7 @@ struct LoginPage {
 
   async handleLogin() {
     const isAccountMatched = await checkUserAccount(this.user, this.prefUtil);
-    if(!this.userAccount) {
+    if(!this.user.userAccount) {
       promptAction.showToast({
         message: '请输入账号',
         duration: 2000
@@ -80,7 +77,8 @@ struct LoginPage {
             .width('90%')
         }
         .padding({ top: 50 })
-        InputAreaView({ userAccount: this.userAccount, isAccountShow: this.isAccountShow, password: this.password })
+
+        InputAreaView({ user: this.user, isAccountShow: this.isAccountShow })
 
         Button('登录')
           .type(ButtonType.Capsule)
@@ -97,6 +95,9 @@ struct LoginPage {
             .fontColor('#ff5f5d5d')
             .onClick(()=> {
               storeUserAccount(this.user, this.prefUtil)
+              promptAction.showToast({
+                message: "账号注册成功"
+              })
             })
 
           Row() {
