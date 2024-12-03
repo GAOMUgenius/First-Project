@@ -2,6 +2,6 @@
 export struct mineView {
 
   build() {
-
+    
   }
 }

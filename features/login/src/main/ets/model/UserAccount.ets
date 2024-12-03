@@ -1,5 +1,5 @@
 export class UserAccount {
-  id: string = ''
+  uid: string = ''
   userType: UserTypeEnum = UserTypeEnum.OWNER
   userName: string = ''
   userAccount: string = ''

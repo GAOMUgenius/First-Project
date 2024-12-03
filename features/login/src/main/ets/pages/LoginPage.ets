@@ -1,22 +1,25 @@
-import { PrefUtil } from "utils/src/main/ets/utils/prefUtil"
+import { PrefUtil } from "utils/src/main/ets/utils/PrefUtil"
 import { Logger } from "utils/src/main/ets/utils/Logger"
 import { UserAccount } from '../model/UserAccount'
 import { TAG } from '@ohos/hypium/src/main/Constant'
-import { router } from '@kit.ArkUI'
+import { promptAction, router } from '@kit.ArkUI'
 import { common } from '@kit.AbilityKit'
-import { checkUserAccount, storeUserAccount } from '../model/prifUtilModel'
+import { checkUserAccount, storeUserAccount } from '../model/PrifUtilModel'
+import { InputAreaView } from '../components/InputAreaView'
 
-//import 'default/src/main/ets/pages/MainPage'
 
 @Entry({ routeName: 'LoginPage' })
 @Component
 struct LoginPage {
-  private user: UserAccount = new UserAccount()
+  private dialog: AlertDialog = new AlertDialog()
+  @Prop user: UserAccount = new UserAccount()
   private logger: Logger = new Logger('[LoginPage]')
+  @State password: string = ''
+  @State userAccount: string | undefined = undefined
   @State rememberPassword: boolean = false
   @State stopLogin: boolean = false
   @State loading: boolean = false
-  @State isAccountShow: boolean = false
+  @Prop isAccountShow: boolean = false
   @State accountImg: string = this.isAccountShow ? 'app.media.up' : 'app.media.down'
   private  prefUtil = new PrefUtil()
   onPageShow() {
@@ -29,7 +32,19 @@ struct LoginPage {
 
   async handleLogin() {
     const isAccountMatched = await checkUserAccount(this.user, this.prefUtil);
-    if (!isAccountMatched) {
+    if(!this.userAccount) {
+      promptAction.showToast({
+        message: '请输入账号',
+        duration: 2000
+      });
+      console.error('preferences账户为空，登录失败');
+      return;
+    }
+    else if (!isAccountMatched) {
+      promptAction.showToast({
+        message: '密码错误，请重新输入',
+        duration: 2000
+      });
       console.error('preferences账户不匹配，登录失败');
       return;
     }
@@ -51,81 +66,6 @@ struct LoginPage {
     })
   }
 
-  @Builder
-  accountTextInput() {
-    Column() {
-      Text('账号')
-        .fontSize(15)
-        .fontFamily('HarmonyHeiTi')
-        .fontWeight(FontWeight.Medium)
-        .width('80%')
-        .fontColor('#ff201d5d')
-        .grayscale(0)
-        .padding({ bottom: 5})
-      Stack() {
-        TextInput()
-          .type(InputType.Email)
-          .width('80%')
-          .onChange(( value: string) => {
-            this.user.userAccount = value
-          })
-        if (this.isAccountShow) {
-          Image($r('app.media.up'))
-            .width(20)
-            .height(20)
-            .onClick(() => {
-              this.isAccountShow =!this.isAccountShow
-            })
-            .margin({ right: 15 })
-        } else {
-          Image($r('app.media.down'))
-            .width(20)
-            .height(20)
-            .onClick(() => {
-              this.isAccountShow =!this.isAccountShow
-            })
-            .margin({ right: 15 })
-        }
-      }
-      .alignContent(Alignment.End)
-      .bindSheet(this.isAccountShow, this.accountShow(), {
-        detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
-        backgroundColor: Color.White,
-        blurStyle: BlurStyle.Thick,
-        showClose: false,
-        dragBar: true, // 默认显示控制条
-      });
-    }
-  }  
-
-  @Builder
-  accountShow() {
-    List() {
-      // ForEach()
-    }
-  }
-
-  @Builder
-  passwordTextInput() {
-    Column() {
-      Text('密码')
-        .fontSize(15)
-        .fontFamily('HarmonyHeiTi')
-        .fontWeight(FontWeight.Medium)
-        .width('80%')
-        .fontColor('#ff201d5d')
-        .grayscale(0)
-        .padding({ bottom: 5})
-
-      TextInput()
-        .type(InputType.Password)
-        .width('80%')
-        .onChange(( value: string) => {
-          this.user.password = value
-        })
-    }
-  }
-
   build() {
     Column() {
       Column({ space: 15 }) {
@@ -140,10 +80,7 @@ struct LoginPage {
             .width('90%')
         }
         .padding({ top: 50 })
-        //账号输入框
-        this.accountTextInput()
-        //密码输入框
-        this.passwordTextInput()
+        InputAreaView({ userAccount: this.userAccount, isAccountShow: this.isAccountShow, password: this.password })
 
         Button('登录')
           .type(ButtonType.Capsule)

@@ -1,6 +1,6 @@
 import { PrefUtil } from 'utils';
 import { UserAccount } from './UserAccount';
-
+// 将用户数据存入首选项数据库中
 export async function  storeUserAccount(userAccount: UserAccount, prefUtil: PrefUtil) {
   const userAccountObj = userAccount;
   const userAccountObjJSON = JSON.stringify(userAccountObj);
