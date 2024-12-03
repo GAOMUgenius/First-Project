@@ -96,7 +96,7 @@ struct LoginPage {
         dragBar: true, // 默认显示控制条
       });
     }
-  }
+  }  
 
   @Builder
   accountShow() {
