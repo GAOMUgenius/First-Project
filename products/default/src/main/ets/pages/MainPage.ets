@@ -16,7 +16,7 @@ struct MainPage {
 
   build() {
     Navigation(this.appPathStack) {
-      Stack() {
+      Flex({ direction: FlexDirection.Column }) {
         Tabs({ index: this.currentIndex }) {
           TabContent() {
             HomePageView()
@@ -33,5 +33,7 @@ struct MainPage {
         CustomTabBar({ currentIndex: $currentIndex })
       }
     }
+    .hideTitleBar(true)
+    .mode(NavigationMode.Stack)
   }
 }

@@ -18,6 +18,7 @@ export struct CustomTabBar {
 
   build() {
     Flex({
+      direction: FlexDirection.Row,
       alignItems: ItemAlign.Center,
       justifyContent: FlexAlign.SpaceAround
     }) {
@@ -29,6 +30,15 @@ export struct CustomTabBar {
         })
       }, (item: TabBarData) => item.id.toString())
     }
+    .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
+    .backgroundBlurStyle(BlurStyle.NONE)
+    .padding({ bottom: 0 })
+    .clip(false)
+    .height(56)
+    .width('100%')
+    .border({
+      width: { top: 0.5 }
+    })
   }
 }
 @Component
@@ -49,7 +59,7 @@ struct TabItem {
         .fontSize(10)
         .margin({ top: 5 })
         .fontWeight(600)
-        .fontColor(this.index === this.selectedIndex ? $r('app.color.challenge_light') : $r('app.color.challenge_night'))
+        .fontColor(this.index === this.selectedIndex ? $r('sys.color.ohos_id_color_bottom_tab_text_on') : $r('sys.color.ohos_id_color_bottom_tab_text_off'))
 
     }
     .clip(false)

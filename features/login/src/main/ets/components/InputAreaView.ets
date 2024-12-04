@@ -1,6 +1,8 @@
 import { Constants } from "../constants/LoginContants"
 import { UserAccount } from "../model/UserAccount"
-
+/**
+ * 输入账号密码的View
+ */
 @Component
 export struct InputAreaView {
   @Link user: UserAccount
