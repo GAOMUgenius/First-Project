@@ -20,7 +20,7 @@ export struct InputAreaView {
           .grayscale(0)
           .padding({ bottom: 5 })
         Stack() {
-          TextInput()
+          TextInput({ text: this.user.userAccount })
             .type(InputType.Email)
             .width('80%')
             .onChange((value: string) => {
@@ -46,7 +46,7 @@ export struct InputAreaView {
           .grayscale(0)
           .padding({ bottom: 5 })
 
-        TextInput()
+        TextInput({ text: this.user.password })
           .type(InputType.Password)
           .width('80%')
           .onChange((value: string) => {

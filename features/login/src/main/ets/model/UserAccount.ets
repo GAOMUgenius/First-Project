@@ -1,10 +1,11 @@
 export class UserAccount {
   uid: string = ''
   userType: UserTypeEnum = UserTypeEnum.OWNER
-  userName: string = ''
-  userAccount: string = ''
+  userName: string = '新用户'
+  userAccount: string = '123'
   community: string = ''
-  password: string = ''
+  password: string = '123'
+  imgResource: Resource = $r('app.media.userImg')
 }
 
 export enum UserTypeEnum {

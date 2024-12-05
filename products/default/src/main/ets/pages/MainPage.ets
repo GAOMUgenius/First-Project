@@ -32,6 +32,7 @@ struct MainPage {
 
         CustomTabBar({ currentIndex: $currentIndex })
       }
+      .width('100%')
     }
     .hideTitleBar(true)
     .mode(NavigationMode.Stack)
