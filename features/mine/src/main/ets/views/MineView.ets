@@ -1,5 +1,5 @@
 import { UserAccount } from "login/src/main/ets/model/UserAccount";
-import { UserInfoView } from "./UserInfoView";
+import { UserInfoView } from "../components/UserInfoView";
 
 
 @Component
@@ -36,9 +36,9 @@ export struct MineView {
   @Builder
   TextLine() {
     Line()
-      .height(0.5)
-      .width('100%')
-      .backgroundColor('#26FFFFFF')
+      .height(0.8)
+      .width('80%')
+      .backgroundColor('#ffc3c3c3')
       .padding({
         left: 12,
         right: 12

@@ -63,7 +63,7 @@ struct TabItem {
 
     }
     .clip(false)
-    .padding({ left: 4, right: 4})
+    .padding({ left: 4, right: 4 , top: 5 })
     .layoutWeight(1)
     .size({ width: '100%', height: '100%'})
     .onClick(() => {

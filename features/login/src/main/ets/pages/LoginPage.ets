@@ -1,18 +1,18 @@
 import { PrefUtil } from "utils/src/main/ets/utils/PrefUtil"
-import { Logger } from "utils/src/main/ets/utils/Logger"
 import { UserAccount } from '../model/UserAccount'
-import { TAG } from '@ohos/hypium/src/main/Constant'
 import { promptAction, router } from '@kit.ArkUI'
 import { common } from '@kit.AbilityKit'
 import { checkUserAccount, storeUserAccount } from '../model/PrifUtilModel'
 import { InputAreaView } from '../components/InputAreaView'
+import { Logger } from 'utils'
 
+
+const TAG: string = '[LoginPage]'
 
 @Entry({ routeName: 'LoginPage' })
 @Component
 struct LoginPage {
   @Prop user: UserAccount = new UserAccount()
-  private logger: Logger = new Logger('[LoginPage]')
   @State rememberPassword: boolean = false
   @State stopLogin: boolean = false
   @State loading: boolean = false
@@ -20,7 +20,7 @@ struct LoginPage {
   @State accountImg: string = this.isAccountShow ? 'app.media.up' : 'app.media.down'
   private  prefUtil = new PrefUtil()
   onPageShow() {
-    this.logger.info(TAG, 'onPageShow');
+    Logger.info(TAG, 'onPageShow');
   }
 
   async aboutToAppear() {
@@ -34,7 +34,7 @@ struct LoginPage {
         message: '请输入账号',
         duration: 2000
       });
-      console.error('preferences账户为空，登录失败');
+      Logger.error(TAG, 'preferences账户为空，登录失败')
       return;
     }
     else if (!isAccountMatched) {
@@ -42,7 +42,7 @@ struct LoginPage {
         message: '密码错误，请重新输入',
         duration: 2000
       });
-      console.error('preferences账户不匹配，登录失败');
+      Logger.error(TAG, 'preferences账户不匹配，登录失败');
       return;
     }
     if (this.rememberPassword) {
@@ -51,15 +51,15 @@ struct LoginPage {
 
     const bundleName = (getContext(this) as common.UIAbilityContext).applicationInfo.name;
     const url = `@bundle:${bundleName}/default/ets/pages/MainPage`
-    router.pushUrl({
+    router.replaceUrl({
       url,
       params: this.user
     }, (err) => {
       if (err) {
-        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+        Logger.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
         return;
       }
-      console.info('Invoke pushUrl succeeded.');
+      Logger.info(TAG, 'Invoke replaceUrl succeeded.');
     })
   }
 

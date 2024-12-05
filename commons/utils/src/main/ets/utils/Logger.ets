@@ -4,7 +4,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export class Logger {
   private domain: number;
   private prefix: string;
-  private format: string = "%{public}s, %{public}s";
+  private format: string = `%{public}s, %{public}s`;
 
   constructor(prefix: string) {
     this.prefix = prefix;
@@ -28,4 +28,4 @@ export class Logger {
   }
 }
 
-export default new Logger('[HMOSWorld]');
+export default new Logger('[AutoPay]');

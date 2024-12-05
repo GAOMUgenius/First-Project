@@ -5,6 +5,8 @@ import { MineView } from 'mine';
 import { TabBarType } from '../model/TabBarModel';
 import { CustomTabBar } from '../components/CustomTabBar';
 
+const TAG: string = '[MainPage]'
+
 @Entry({ routeName: 'MainPage' })
 @Component
 struct MainPage {
