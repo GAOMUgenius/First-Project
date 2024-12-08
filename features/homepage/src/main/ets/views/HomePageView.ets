@@ -9,8 +9,6 @@ export struct HomePageView {
     Navigation(this.homePagePathStack) {
       Row() {
         Text('首页')
-        Text(this.userAccount.userAccount)
-
       }
       .width('100%')
       .height('100%')
