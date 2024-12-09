@@ -8,7 +8,7 @@ export struct HomePageView {
   build() {
     Navigation(this.homePagePathStack) {
       Row() {
-        Text('首页')
+        Text('页')
       }
       .width('100%')
       .height('100%')
