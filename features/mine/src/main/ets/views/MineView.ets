@@ -5,7 +5,7 @@ import { UserInfoView } from "../components/UserInfoView";
 @Component
 export struct MineView {
   @Consume('minePathStack') minePathStack: NavPathStack;
-  // @Consume userAccount: UserAccount
+  @Consume userAccount: UserAccount
   build() {
     Navigation(this.minePathStack) {
       Row() {
