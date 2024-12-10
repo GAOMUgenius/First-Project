@@ -1,4 +1,4 @@
-import { UserAccount } from "login/src/main/ets/model/UserAccount";
+
 import { UserInfoView } from "../components/UserInfoView";
 
 
