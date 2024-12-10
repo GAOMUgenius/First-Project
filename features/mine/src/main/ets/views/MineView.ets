@@ -10,6 +10,12 @@ export struct MineView {
     Navigation(this.minePathStack) {
       Row() {
         Column() {
+          Text('我的')
+            .fontSize(30)
+            .fontWeight(FontWeight.Bold)
+            .textAlign(TextAlign.Start)
+            .margin({ left: 15 , top: 10 })
+            .width('100%')
           Row() {
             UserInfoView()
 
@@ -26,6 +32,7 @@ export struct MineView {
 
           this.TextLine()
         }
+        .justifyContent(FlexAlign.Start)
         .width('100%')
       }
       .alignItems(VerticalAlign.Top)
