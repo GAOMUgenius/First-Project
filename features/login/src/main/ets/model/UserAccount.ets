@@ -6,6 +6,7 @@ export class UserAccount {
   community: string = ''
   password: string = '123'
   imgResource: Resource = $r('app.media.userImg')
+  balance: string = '0.00'
 }
 
 export enum UserTypeEnum {
