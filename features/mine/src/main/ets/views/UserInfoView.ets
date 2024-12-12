@@ -8,18 +8,21 @@ export struct UserInfoView {
   build() {
     Column() {
       Row() {
-        Image($r('app.media.userImg'))
-          .width('10%')
-          .height('10%')
-          .size({ height: 35, width: 35 })
+        Image(this.userAccount.imgResource)
+          .borderRadius(35)
+          // .size({ height: 35, width: 35 })
+          .width(70)
+          .height(70)
           .padding({ top: 10, left: 10, right: 5 })
         Text(this.userAccount.userAccount)
           .fontSize(20)
           .fontWeight(FontWeight.Medium)
-          .padding({ top: 10 })
+          .padding({ left: 25, top: 20 })
       }
+      // .height('50%')
       .width('100%')
       .justifyContent(FlexAlign.Start)
+      .alignItems(VerticalAlign.Top)
 
       TextLineComponent()
 
@@ -41,7 +44,7 @@ export struct UserInfoView {
               })
           }
           Text( this.isBalanceShow ? this.userAccount.balance : '******')
-            .fontSize(18)
+            .fontSize(25)
             .fontWeight(FontWeight.Bold)
             .margin({ bottom: 7 })
         }
