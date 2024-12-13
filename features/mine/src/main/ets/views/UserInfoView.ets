@@ -9,20 +9,26 @@ export struct UserInfoView {
     Column() {
       Row() {
         Image(this.userAccount.imgResource)
-          .borderRadius(35)
+          .borderRadius(30)
           // .size({ height: 35, width: 35 })
-          .width(70)
-          .height(70)
-          .padding({ top: 10, left: 10, right: 5 })
+          .width(60)
+          .height(60)
+          .margin({ left: 20 })
         Text(this.userAccount.userAccount)
           .fontSize(20)
           .fontWeight(FontWeight.Medium)
-          .padding({ left: 25, top: 20 })
+          .margin({ left: 25, top: 10 })
       }
       // .height('50%')
       .width('100%')
       .justifyContent(FlexAlign.Start)
       .alignItems(VerticalAlign.Top)
+      .margin({
+        left: 20,
+        right: 20,
+        top: 20,
+        bottom: 10
+      })
 
       TextLineComponent()
 
@@ -30,11 +36,11 @@ export struct UserInfoView {
         Column() {
           Row() {
             Text('可用额度')
-              .margin({top: 15, left: 10, bottom: 10})
-              .fontSize(18)
-              .fontWeight(FontWeight.Bold)
+              .fontSize(17)
+              .fontWeight(FontWeight.Regular)
+              .margin({ right: 10 })
+
             Image(this.isBalanceShow ? $r('app.media.balance_appear') : $r('app.media.balance_disappear'))
-              .margin({top: 15, left: 10, bottom: 10})
               .size({
                 width: 20,
                 height: 20
@@ -43,23 +49,44 @@ export struct UserInfoView {
                 this.isBalanceShow = !this.isBalanceShow
               })
           }
-          Text( this.isBalanceShow ? this.userAccount.balance : '******')
-            .fontSize(25)
+          .alignItems(VerticalAlign.Center)
+          .margin({ bottom: 10 })
+
+          Text( this.isBalanceShow ? '￥' + this.userAccount.balance : '******')
+            .fontSize(30)
             .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 7 })
+            // .textAlign(TextAlign.Start)
         }
+        // .justifyContent(FlexAlign.Start)
+        .alignItems(HorizontalAlign.Start)
+
         Button('立即充值')
+          .backgroundColor(Color.Black)
+          .size({
+            width: 90,
+            height: 40
+          })
+          .margin({ top: 15 })
+
       }
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
+      .padding({
+        left: 20,
+        right: 20,
+        top: 10,
+        bottom: 20
+      })
     }
     .linearGradient({
-      angle: 45, // 设置颜色渐变起始角度为顺时针方向45°
+      angle: 135, // 设置颜色渐变起始角度为顺时针方向45°
       colors: [
-        [0xf56c6c, 0.0],
-        [0xffffff, 1.0],
+        [0xfbc2eb, 0.0],
+        [0xa6c1ee, 1.0],
       ]
     })
+    .borderRadius(20)
+    .margin({ top: 20 })
     .width('90%')
   }
 }
