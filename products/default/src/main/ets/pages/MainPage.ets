@@ -12,12 +12,12 @@ const TAG: string = '[MainPage]'
 struct MainPage {
   @Provide userAccount: UserAccount = router.getParams() as UserAccount;
   @State currentIndex: TabBarType = TabBarType.MAINPAGE
-  @Provide('appPathStack') appPathStack: NavPathStack = new NavPathStack();
+  @Provide('MainPagePathStack') MainPagePathStack: NavPathStack = new NavPathStack();
   @Provide('minePathStack') minePathStack: NavPathStack = new NavPathStack();
   @Provide('homePagePathStack') homePagePathStack: NavPathStack = new NavPathStack();
 
   build() {
-    Navigation(this.appPathStack) {
+    Navigation(this.MainPagePathStack) {
       Flex({ direction: FlexDirection.Column }) {
         Tabs({ index: this.currentIndex }) {
           TabContent() {
@@ -34,6 +34,7 @@ struct MainPage {
 
         CustomTabBar({ currentIndex: $currentIndex })
       }
+      .backgroundColor($r('app.color.mainpage_background'))
       .width('100%')
     }
     .hideTitleBar(true)

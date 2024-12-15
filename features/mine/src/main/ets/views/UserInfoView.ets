@@ -1,9 +1,11 @@
 import { UserAccount } from 'login/src/main/ets/model/UserAccount'
-import { TextLineComponent } from '../components/TextLineComponent'
+import { TextLineComponent } from 'utils/src/main/ets/components/TextLineComponent'
 
+
+//用户信息卡片片
 @Component
 export struct UserInfoView {
-@Consume userAccount: UserAccount
+  @Consume userAccount: UserAccount
   @State isBalanceShow: boolean = false
   build() {
     Column() {
@@ -79,14 +81,13 @@ export struct UserInfoView {
       })
     }
     .linearGradient({
-      angle: 135, // 设置颜色渐变起始角度为顺时针方向45°
+      angle: 135, // 设置颜色渐变起始角度为顺时针方向135°
       colors: [
         [0xfbc2eb, 0.0],
         [0xa6c1ee, 1.0],
       ]
     })
     .borderRadius(20)
-    .margin({ top: 20 })
     .width('90%')
   }
 }

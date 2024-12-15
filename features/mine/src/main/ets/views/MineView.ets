@@ -1,7 +1,7 @@
 
 import { UserInfoView } from "./UserInfoView";
 import { MineHeaderView } from "./MineHeaderView";
-import { TextLineComponent } from "../components/TextLineComponent";
+import { PayManangeView } from "./PayManageView";
 
 
 @Component
@@ -13,9 +13,13 @@ export struct MineView {
       Row() {
         Column() {
           MineHeaderView()
+            .margin({ top: 10 })
 
           UserInfoView()
+            .margin({ top: 20 })
 
+          PayManangeView()
+            .margin({ top: 20 })
 
         }
         .justifyContent(FlexAlign.Start)

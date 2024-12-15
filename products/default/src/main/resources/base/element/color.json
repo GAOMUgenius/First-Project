@@ -11,6 +11,10 @@
     {
       "name": "challenge_night",
       "value": "#99FFFFFF"
+    },
+    {
+      "name": "mainpage_background",
+      "value": "#ebf5f5f5"
     }
   ]
 }
