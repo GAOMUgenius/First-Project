@@ -11,7 +11,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button('点击进入主页面')
+        Button('点击进入主面')
           .onClick(() => {
             const bundleName: string = (getContext(this) as common.UIAbilityContext).applicationInfo.name;
             const url = `@bundle:${bundleName}/default/ets/pages/MainPage`
