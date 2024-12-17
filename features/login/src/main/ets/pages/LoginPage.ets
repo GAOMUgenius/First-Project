@@ -5,6 +5,7 @@ import { common } from '@kit.AbilityKit'
 import { checkUserAccount, storeUserAccount } from '../model/PrifUtilModel'
 import { InputAreaView } from '../components/InputAreaView'
 import { Logger } from 'utils'
+import RouterModule from 'routermodule/src/main/ets/routermodule/RouterModule'
 
 
 const TAG: string = '[LoginPage]'
@@ -25,6 +26,15 @@ struct LoginPage {
 
   async aboutToAppear() {
    await this.prefUtil.loadPreference(getContext(this));
+    // // 在页面首次加载时触发执行
+    // const builderName = 'LoginPage'
+    // // 判断表中是否已存在路由信息，避免重复注册
+    // if (!RouterModule.getRouter(builderName)) {
+    //   // 通过系统提供的wrapBuilder接口封装@Builder装饰的方法，生成harB1页面builder
+    //   let builder: WrappedBuilder<[object]> = wrapBuilder(harBuilder);
+    //   // 注册harB1页面到全局路由表
+    //   RouterModule.registerBuilder(builderName, builder);
+    // }
   }
 
   async handleLogin() {

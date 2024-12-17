@@ -52,6 +52,10 @@
     {
       "name": "mine",
       "srcPath": "./features/mine",
+    },
+    {
+      "name": "routermodule",
+      "srcPath": "./commons/routermodule",
     }
   ]
 }
