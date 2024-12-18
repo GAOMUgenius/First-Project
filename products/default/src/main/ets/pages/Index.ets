@@ -2,7 +2,9 @@ import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import 'login/src/main/ets/pages/LoginPage'
 import { common } from '@kit.AbilityKit';
-import { RouterModule } from 'routermodule/src/main/ets/routermodule/RouterModule';
+import { buildRouterModel, RouterModule, RouterNameConstants } from 'routermodule';
+
+
 
 
 @Entry
@@ -10,13 +12,18 @@ import { RouterModule } from 'routermodule/src/main/ets/routermodule/RouterModul
 struct Index {
   @State message: string = 'Hello World';
   @Provide('indexPathStack') indexPathStack: NavPathStack = new NavPathStack()
+  @Provide('loginPagePathStack') loginPagePathStack: NavPathStack = new NavPathStack()
   aboutToAppear() {
     if (!this.indexPathStack) {
       this.indexPathStack = new NavPathStack();
     }
-    RouterModule.createRouter('indexPathStack', this.indexPathStack);
+    RouterModule.createRouter(RouterNameConstants.DEFAULT_INDEX, this.indexPathStack);
   };
-
+  @Builder
+  routerMap(builderName: string, param: object) {
+    // 根据模块名称获取 WrappedBuilder 对象，通过 builder 界面创建页面，并导入 param 参数。
+    RouterModule.getBuilder(builderName).builder(param);
+  };
 
 
 
@@ -38,19 +45,20 @@ struct Index {
         }
         Button('点击进入登录界面')
           .onClick(() => {
-            router.replaceNamedRoute({
-              name: 'LoginPage'
-            },router.RouterMode.Standard)
-              .then(() => {
-                console.log('页面跳转成功！');
-              }).catch((err: BusinessError) => {
-              console.error(`页面跳转失败，错误代码：${err.code}, 错误信息：${err.message}`);
-            });
+            // router.replaceNamedRoute({
+            //   name: 'LoginPage'
+            // },router.RouterMode.Standard)
+            //   .then(() => {
+            //     console.log('页面跳转成功！');
+            //   }).catch((err: BusinessError) => {
+            //   console.error(`页面跳转失败，错误代码：${err.code}, 错误信息：${err.message}`);
+            // });
+            buildRouterModel(RouterNameConstants.DEFAULT_INDEX, RouterNameConstants.LOGIN_LOGINPAGE)
           })
 
       }
     }
     .title('NavIndex')
-    // .navDestination(this.routerMap);
+    .navDestination(this.routerMap);
   }
 }

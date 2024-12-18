@@ -7,6 +7,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "utils": "file:../../commons/utils",
-    "routermodule": "file:../../commons/routermodule"
+    "routermodule": "file:../../commons/RouterModule"
   }
 }

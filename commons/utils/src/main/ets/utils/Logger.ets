@@ -1,7 +1,7 @@
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-export class Logger {
+class Logger {
   private domain: number;
   private prefix: string;
   private format: string = `%{public}s, %{public}s`;

@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "routermodule",
+    "name": "RouterModule",
     "type": "har",
     "deviceTypes": [
       "default",

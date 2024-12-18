@@ -10,6 +10,6 @@
     "login": "file:../../features/login",
     "homepage": "file:../../features/homepage",
     "mine": "file:../../features/mine",
-    "routermodule": "file:../../commons/routermodule"
+    "routermodule": "file:../../commons/RouterModule"
   }
 }

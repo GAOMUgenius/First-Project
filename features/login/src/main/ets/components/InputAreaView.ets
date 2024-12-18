@@ -1,4 +1,4 @@
-import { Constants } from "../constants/LoginContants"
+import { ResourceConstants } from "../constants/LoginContants"
 import { UserAccount } from "../model/UserAccount"
 /**
  * 输入账号密码的View
@@ -26,7 +26,7 @@ export struct InputAreaView {
             .onChange((value: string) => {
               this.user.userAccount = value
             })
-          Image(this.isAccountShow ? Constants.ACCOUNT_SHOW_UP : Constants.ACCOUNT_SHOW_DOWN)
+          Image(this.isAccountShow ? ResourceConstants.ACCOUNT_SHOW_UP : ResourceConstants.ACCOUNT_SHOW_DOWN)
             .width(20)
             .height(20)
             .onClick(() => {

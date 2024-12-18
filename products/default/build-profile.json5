@@ -6,6 +6,13 @@
     {
       "name": "release",
       "arkOptions": {
+        "runtimeOnly": {
+          "sources": [
+          ],
+          "packages": [
+            "login"
+          ]
+        },
         "obfuscation": {
           "ruleOptions": {
             "enable": false,

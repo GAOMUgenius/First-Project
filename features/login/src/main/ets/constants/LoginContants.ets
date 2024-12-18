@@ -2,7 +2,8 @@
  * 登录界面需要用到的常量资源
  */
 
-export class Constants {
+export class ResourceConstants {
   static readonly ACCOUNT_SHOW_UP: Resource = $r("app.media.account_show_up")
   static readonly ACCOUNT_SHOW_DOWN: Resource = $r("app.media.account_show_down")
 }
+

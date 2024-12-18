@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "routermodule_test",
+    "name": "RouterModule_test",
     "type": "feature",
     "deviceTypes": [
       "default",
