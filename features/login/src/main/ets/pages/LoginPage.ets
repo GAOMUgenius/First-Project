@@ -76,17 +76,20 @@ export struct LoginPage {
     NavDestination() {
       Column() {
         Column({ space: 15 }) {
-          Column() {
-            Text('Sign Up.')
+          Stack() {
+            Image($r('app.media.login'))
+              .width('100%')
+
+            Text('Log In.')
               .fontSize(44)
               .fontWeight(FontWeight.Bolder)
-              .width('90%')
               .fontColor('#ff201d5d')
-
-            Image($r('app.media.login'))
-              .width('90%')
+              .textAlign(TextAlign.Center)
+              .margin({ left: 10, top: 10 })
           }
-          .padding({ top: 50 })
+          .width('100%')
+          .alignContent(Alignment.TopStart)
+          .padding({ top: 20 })
 
           InputAreaView({ user: this.user, isAccountShow: this.isAccountShow })
 
@@ -130,6 +133,7 @@ export struct LoginPage {
       }
       .height('100%')
     }
+    .hideTitleBar(true)
   }
 }
 

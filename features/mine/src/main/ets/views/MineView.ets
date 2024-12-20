@@ -6,10 +6,10 @@ import { PayManangeView } from "./PayManageView";
 
 @Component
 export struct MineView {
-  @Consume('minePathStack') minePathStack: NavPathStack;
+  // @Consume('minePathStack') minePathStack: NavPathStack;
   // @Consume userAccount: UserAccount
   build() {
-    Navigation(this.minePathStack) {
+    Navigation() {
       Row() {
         Column() {
           MineHeaderView()

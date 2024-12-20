@@ -10,15 +10,14 @@ import { buildRouterModel, RouterModule, RouterNameConstants } from 'routermodul
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   @Provide('indexPathStack') indexPathStack: NavPathStack = new NavPathStack()
-  @Provide('loginPagePathStack') loginPagePathStack: NavPathStack = new NavPathStack()
   aboutToAppear() {
     if (!this.indexPathStack) {
       this.indexPathStack = new NavPathStack();
     }
     RouterModule.createRouter(RouterNameConstants.DEFAULT_INDEX, this.indexPathStack);
   };
+
   @Builder
   routerMap(builderName: string, param: object) {
     // 根据模块名称获取 WrappedBuilder 对象，通过 builder 界面创建页面，并导入 param 参数。
@@ -45,20 +44,13 @@ struct Index {
         }
         Button('点击进入登录界面')
           .onClick(() => {
-            // router.replaceNamedRoute({
-            //   name: 'LoginPage'
-            // },router.RouterMode.Standard)
-            //   .then(() => {
-            //     console.log('页面跳转成功！');
-            //   }).catch((err: BusinessError) => {
-            //   console.error(`页面跳转失败，错误代码：${err.code}, 错误信息：${err.message}`);
-            // });
+            //通过routermap路由进行跳转，跳转到loginpage页面
             buildRouterModel(RouterNameConstants.DEFAULT_INDEX, RouterNameConstants.LOGIN_LOGINPAGE)
           })
-
       }
     }
-    .title('NavIndex')
+    .title('引导页')
+    .hideTitleBar(true)
     .navDestination(this.routerMap);
   }
 }
