@@ -6,23 +6,18 @@
     {
       "name": "release",
       "arkOptions": {
-        "runtimeOnly": {
-          "sources": [
-          ],
-          "packages": [
-            "login",
-            "mainpage"
-          ]
-        },
         "obfuscation": {
           "ruleOptions": {
             "enable": false,
             "files": [
               "./obfuscation-rules.txt"
             ]
-          }
+          },
+          "consumerFiles": [
+            "./consumer-rules.txt"
+          ]
         }
-      }
+      },
     },
   ],
   "targets": [
@@ -30,7 +25,7 @@
       "name": "default"
     },
     {
-      "name": "ohosTest",
+      "name": "ohosTest"
     }
   ]
 }

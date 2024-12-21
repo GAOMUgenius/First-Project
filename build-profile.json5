@@ -56,6 +56,10 @@
     {
       "name": "RouterModule",
       "srcPath": "./commons/RouterModule",
+    },
+    {
+      "name": "mainpage",
+      "srcPath": "./features/mainpage",
     }
   ]
 }

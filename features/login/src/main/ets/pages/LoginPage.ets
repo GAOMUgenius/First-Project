@@ -6,12 +6,11 @@ import { checkUserAccount, storeUserAccount } from '../model/PrifUtilModel'
 import { InputAreaView } from '../components/InputAreaView'
 import { Logger } from 'utils'
 
-import { RouterModule } from "routermodule/src/main/ets/utils/RouterModule"
-import { RouterNameConstants } from "routermodule"
+import { buildRouterModel, RouterNameConstants, BuilderNameContants, RouterModule } from "routermodule"
 
 
 const TAG: string = '[LoginPage]'
-const builderName = RouterNameConstants.LOGIN_LOGINPAGE
+const builderName = BuilderNameContants.LOGIN_LOGINPAGE
 if (!RouterModule.getBuilder(builderName)) {
   const builder: WrappedBuilder<[object]> = wrapBuilder(loginBuilderPage);
   RouterModule.registerBuilder(builderName, builder);
@@ -58,18 +57,19 @@ export struct LoginPage {
       await storeUserAccount(this.user, this.prefUtil);
     }
     // 检测完成，进行登录
-    const bundleName = (getContext(this) as common.UIAbilityContext).applicationInfo.name;
-    const url = `@bundle:${bundleName}/default/ets/pages/MainPage`
-    router.replaceUrl({
-      url,
-      params: this.user
-    }, (err) => {
-      if (err) {
-        Logger.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      Logger.info(TAG, 'Invoke replaceUrl succeeded.');
-    })
+    // const bundleName = (getContext(this) as common.UIAbilityContext).applicationInfo.name;
+    // const url = `@bundle:${bundleName}/default/ets/pages/MainPage`
+    // router.replaceUrl({
+    //   url,
+    //   params: this.user
+    // }, (err) => {
+    //   if (err) {
+    //     Logger.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+    //     return;
+    //   }
+    //   Logger.info(TAG, 'Invoke replaceUrl succeeded.');
+    // })
+    buildRouterModel(RouterNameConstants.DEFAULT_INDEX, BuilderNameContants.MAINPAGE_MAINPAGE)
   }
 
   build() {

@@ -1,16 +1,14 @@
 import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import 'login/src/main/ets/pages/LoginPage'
 import { common } from '@kit.AbilityKit';
-import { buildRouterModel, RouterModule, RouterNameConstants } from 'routermodule';
-
-
+import { BuilderNameContants, buildRouterModel, RouterModule, RouterNameConstants } from 'routermodule';
+import { Logger } from 'utils';
 
 
 @Entry
 @Component
 struct Index {
-  @Provide('indexPathStack') indexPathStack: NavPathStack = new NavPathStack()
+  @State indexPathStack: NavPathStack = new NavPathStack()
   aboutToAppear() {
     if (!this.indexPathStack) {
       this.indexPathStack = new NavPathStack();
@@ -45,7 +43,7 @@ struct Index {
         Button('点击进入登录界面')
           .onClick(() => {
             //通过routermap路由进行跳转，跳转到loginpage页面
-            buildRouterModel(RouterNameConstants.DEFAULT_INDEX, RouterNameConstants.LOGIN_LOGINPAGE)
+            buildRouterModel(RouterNameConstants.DEFAULT_INDEX, BuilderNameContants.LOGIN_LOGINPAGE)
           })
       }
     }

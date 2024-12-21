@@ -3,21 +3,24 @@ import { router } from '@kit.ArkUI';
 import { UserAccount } from 'login/src/main/ets/model/UserAccount';
 import { MineView } from 'mine';
 import { TabBarType } from '../model/TabBarModel';
+
+import { RouterModule, RouterNameConstants, BuilderNameContants } from 'routermodule';
 import { CustomTabBar } from '../components/CustomTabBar';
 
 const TAG: string = '[MainPage]'
 
-@Entry({ routeName: 'MainPage' })
+
+
 @Component
-struct MainPage {
+export struct MainPage {
   @Provide userAccount: UserAccount = router.getParams() as UserAccount;
   @State currentIndex: TabBarType = TabBarType.MAINPAGE
-  @Provide('MainPagePathStack') MainPagePathStack: NavPathStack = new NavPathStack();
-  @Provide('minePathStack') minePathStack: NavPathStack = new NavPathStack();
-  @Provide('homePagePathStack') homePagePathStack: NavPathStack = new NavPathStack();
+  // @Provide('MainPagePathStack') MainPagePathStack: NavPathStack = new NavPathStack();
+  // @Provide('minePathStack') minePathStack: NavPathStack = new NavPathStack();
+  // @Provide('homePagePathStack') homePagePathStack: NavPathStack = new NavPathStack();
 
   build() {
-    Navigation(this.MainPagePathStack) {
+    NavDestination() {
       Flex({ direction: FlexDirection.Column }) {
         Tabs({ index: this.currentIndex }) {
           TabContent() {
@@ -38,6 +41,16 @@ struct MainPage {
       .width('100%')
     }
     .hideTitleBar(true)
-    .mode(NavigationMode.Stack)
   }
+}
+
+@Builder
+export function mainBuilderPage() {
+  MainPage()
+}
+
+const builderName = BuilderNameContants.MAINPAGE_MAINPAGE
+if (!RouterModule.getBuilder(builderName)) {
+  const builder: WrappedBuilder<[object]> = wrapBuilder(mainBuilderPage);
+  RouterModule.registerBuilder(builderName, builder);
 }
