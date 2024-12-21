@@ -55,7 +55,5 @@ export struct InputAreaView {
       }
     }
     .margin({ bottom: 15 })
-
-
   }
 }
